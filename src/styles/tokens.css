@@ -1,0 +1,178 @@
+/* DevEnglish — design tokens (v2, ported from DevEnglish Prototype) */
+:root {
+  /* Surfaces — warm cream */
+  --surface: #faf7f1;
+  --surface-2: #f3efe6;
+  --card: #ffffff;
+  --card-tint: #fbfaf6;
+
+  /* Borders */
+  --border: #ece7dc;
+  --border-strong: #ddd5c4;
+
+  /* Text */
+  --ink: #2a2620;
+  --ink-2: #5a544a;
+  --ink-3: #8a8478;
+  --ink-mute: #b3ad9f;
+
+  /* Slate blue — primary */
+  --blue: #6c84b3;
+  --blue-deep: #4f6896;
+  --blue-soft: #e9eef7;
+  --blue-tint: #f4f7fc;
+
+  /* Pastel green / mint — mastered & accent */
+  --green: #8cba9a;
+  --green-deep: #6ea481;
+  --green-soft: #e6f1e8;
+
+  --mint: #9dd0bf;
+  --mint-deep: #6fb5a0;
+  --mint-soft: #e4f3ee;
+
+  /* Warm peach — warning / wrong */
+  --peach: #d4a079;
+  --peach-deep: #b88159;
+  --peach-soft: #f6e8d8;
+
+  /* Gold */
+  --gold: #d4b15c;
+  --gold-soft: #f5edd6;
+
+  /* Radii */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 18px;
+  --r-xl: 22px;
+
+  /* Shadows */
+  --shadow-1: 0 1px 2px rgba(40, 30, 20, 0.04), 0 1px 0 rgba(40, 30, 20, 0.02);
+  --shadow-2: 0 2px 6px rgba(40, 30, 20, 0.05), 0 1px 2px rgba(40, 30, 20, 0.04);
+  --shadow-3: 0 12px 32px rgba(40, 30, 20, 0.08), 0 4px 12px rgba(40, 30, 20, 0.04);
+  --shadow-4: 0 24px 60px rgba(40, 30, 20, 0.1), 0 8px 20px rgba(40, 30, 20, 0.06);
+
+  /* Type */
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* ── Base reset ─────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  width: 100%; height: 100%;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink);
+  background: var(--surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar hide on scrollable areas */
+.de-scroll::-webkit-scrollbar { display: none; }
+.de-scroll { scrollbar-width: none; }
+
+/* ── Buttons ────────────────────────── */
+.de-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.06s;
+  box-shadow: var(--shadow-1);
+}
+.de-btn:hover { border-color: var(--border-strong); background: var(--card-tint); }
+.de-btn:active { transform: translateY(1px); }
+.de-btn.primary {
+  background: var(--blue);
+  border-color: var(--blue-deep);
+  color: white;
+  box-shadow: 0 2px 0 var(--blue-deep), 0 6px 14px rgba(108, 132, 179, 0.35);
+}
+.de-btn.primary:hover { background: var(--blue-deep); }
+.de-btn.ghost { background: transparent; border-color: transparent; box-shadow: none; }
+.de-btn.ghost:hover { background: rgba(0,0,0,0.04); }
+
+/* ── Cards ──────────────────────────── */
+.de-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-2);
+}
+.de-card-pad { padding: 22px; }
+
+/* ── Typography helpers ─────────────── */
+.de-mono { font-family: var(--font-mono); }
+.de-muted { color: var(--ink-3); }
+.de-zh { color: var(--ink-2); font-size: 13px; }
+.de-h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.015em; margin: 0; }
+.de-h3 { font-size: 16px; font-weight: 600; letter-spacing: -0.005em; margin: 0; }
+.de-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Letter typing classes ──────────── */
+.de-letter          { font-family: var(--font-mono); transition: color 0.1s; }
+.de-letter-normal   { color: var(--ink-3); }
+.de-letter-correct  { color: var(--mint-deep); }
+.de-letter-wrong    { color: var(--peach-deep); }
+.de-letter-space-normal  { color: var(--ink-mute); }
+.de-letter-space-correct { color: var(--mint); }
+.de-letter-space-wrong   { color: var(--peach); }
+
+/* ── Animations ─────────────────────── */
+@keyframes spin    { to { transform: rotate(360deg); } }
+@keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(8px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* ── Mobile responsive ───────────────── */
+@media (max-width: 768px) {
+  :root {
+    --r-xs: 5px;
+    --r-sm: 8px;
+    --r-md: 11px;
+    --r-lg: 14px;
+    --r-xl: 16px;
+    --font-size-base: 13px;
+    --page-pad: 16px;
+    --card-pad: 14px;
+    --drawer-width: 95vw;
+  }
+  .de-card-pad   { padding: 14px; }
+  .de-h2         { font-size: 18px; }
+  .de-h3         { font-size: 14px; }
+
+  /* Layout utilities */
+  .de-mobile-hide { display: none !important; }
+  .de-mobile-col  { flex-direction: column !important; }
+  .de-mobile-full { width: 100% !important; flex: none !important; }
+
+  /* Prevent horizontal overflow on the whole page */
+  body { overflow-x: hidden; }
+}
+@media (min-width: 769px) {
+  :root {
+    --page-pad: 28px;
+    --card-pad: 22px;
+    --drawer-width: 440px;
+  }
+}
