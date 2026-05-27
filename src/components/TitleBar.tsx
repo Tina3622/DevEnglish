@@ -10,9 +10,9 @@ export default function TitleBar({ label }: { label: string }) {
         padding: '8px 14px',
         background: 'var(--card)',
         borderBottom: '1px solid var(--border)',
-        WebkitAppRegion: 'drag' as any,
+        WebkitAppRegion: 'drag',
         userSelect: 'none',
-      }}
+      } as React.CSSProperties}
     >
       {/* macOS traffic lights */}
       <div style={{ display: 'flex', gap: 7, alignItems: 'center' }}>
@@ -23,18 +23,18 @@ export default function TitleBar({ label }: { label: string }) {
             borderRadius: '50%',
             background: '#fe5f57',
             display: 'inline-block',
-            WebkitAppRegion: 'no-drag' as any,
-          }}
+            WebkitAppRegion: 'no-drag',
+          } as React.CSSProperties}
         />
         <span
           style={{
             width: 12,
             height: 12,
             borderRadius: '50%',
-            background: '#febc2e',
+            background: '#febc2c',
             display: 'inline-block',
-            WebkitAppRegion: 'no-drag' as any,
-          }}
+            WebkitAppRegion: 'no-drag',
+          } as React.CSSProperties}
         />
         <span
           style={{
@@ -43,8 +43,8 @@ export default function TitleBar({ label }: { label: string }) {
             borderRadius: '50%',
             background: '#28c840',
             display: 'inline-block',
-            WebkitAppRegion: 'no-drag' as any,
-          }}
+            WebkitAppRegion: 'no-drag',
+          } as React.CSSProperties}
         />
       </div>
 
